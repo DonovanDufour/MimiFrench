@@ -476,6 +476,57 @@ body.ww-on{overflow:hidden}
 .mf-points{font-family:var(--font-pop);font-size:clamp(1.8rem,8vw,2.6rem);color:#fff;background:#FF8A1F;border:4px solid #000;border-radius:16px;padding:4px 18px;box-shadow:0 5px 0 #000;transform:rotate(-4deg);-webkit-text-stroke:1px #000}
 @media (max-height:620px){ .wg-pic{font-size:4.2rem} .mf-play{padding-top:62px;gap:8px} .groups button{min-height:90px} .mf-bubble{font-size:3.4rem;padding:14px 24px} }
 
+/* level picker, glyph badges, sentence & grammar games */
+.glyph{display:inline-grid;place-items:center;font-family:var(--font-ja);font-weight:900;font-size:.34em;line-height:1.2;padding:.35em .55em;border-radius:.45em;background:#FFF2A8;color:#15122C;border:.08em solid #15122C;max-width:9em;text-align:center;white-space:normal;vertical-align:middle}
+.glyph.kanji{font-size:.62em;padding:.15em .3em;min-width:1.4em}
+.lvl-h{display:flex;align-items:center;gap:10px;margin:26px 0 12px}
+.lvl-h b{font-family:var(--font-pop);font-weight:400;font-size:1.3rem;background:var(--ink);color:var(--paper);border-radius:12px;padding:2px 12px}
+.lvl-h span{font-weight:900;color:var(--muted)}
+.card .word.sent{font-size:clamp(1.3rem,5.4vw,1.8rem);font-family:var(--font-fr)}
+.ask .word.sent{font-size:1.4rem}
+.mf-levels{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.mf-levels button{font-family:var(--font-pop);font-size:1.3rem;min-width:66px;padding:4px 10px 6px;border-radius:14px;background:rgba(255,255,255,.85);color:var(--mf-ink);border:3px solid #000;box-shadow:0 3px 0 #000;line-height:1.05}
+.mf-levels button small{display:block;font-family:var(--font-ja);font-weight:900;font-size:.5em}
+.mf-levels button.on{background:var(--mf-gold);transform:translateY(-2px) scale(1.06)}
+.mf-col{display:flex;flex-direction:column;gap:10px;width:min(520px,100%)}
+.mf-btn.sent{font-family:var(--font-fr);font-weight:700;font-size:clamp(1rem,4.4vw,1.3rem);text-align:left;padding:10px 14px}
+.mf-btn.sent.ja{font-family:var(--font-ja);display:flex;align-items:center;gap:10px}
+.mf-btn .p{font-size:1.8rem;flex:none}
+.bd-ja{display:flex;align-items:center;gap:10px;background:rgba(21,18,44,.88);color:#fff;border-radius:16px;padding:8px 16px;font-weight:900;text-align:left;max-width:min(520px,100%)}
+.bd-ja .p{font-size:2rem;flex:none}
+.bd-ja.big{font-size:1.15rem;padding:12px 18px}
+.bd-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;min-height:62px;width:min(560px,100%);padding:8px;border-radius:16px;background:rgba(255,255,255,.9);border:4px dashed #000}
+.bd-line.ok{border-style:solid;background:#9DFF8A}
+.bd-bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:min(560px,100%)}
+.bd-tile{font-family:var(--font-fr);font-weight:700;font-size:clamp(1rem,4.6vw,1.3rem);background:#FFFBEA;color:var(--mf-ink);border:3px solid #000;border-radius:12px;box-shadow:0 4px 0 #000;padding:6px 12px}
+.bd-tile.in{background:#D9F3FF;box-shadow:0 2px 0 #000}
+.bd-tile.bad{background:#FF9A9A}
+.bd-end{font-family:var(--font-fr);font-weight:700;font-size:1.3rem}
+.cj-card{background:#fff;border:4px solid #000;border-radius:20px;box-shadow:0 5px 0 #000;padding:12px 20px;display:flex;flex-direction:column;align-items:center;gap:6px;max-width:min(520px,100%)}
+.cj-card>small{font-weight:900;color:var(--pink)}
+.cj-verb{font-family:var(--font-pop);font-size:1.5rem;background:#15122C;color:#fff;border-radius:12px;padding:2px 14px}
+.cj-verb em{font-style:normal;color:var(--mf-gold);font-size:.8em}
+.cj-verb small{display:block;font-family:var(--font-ja);font-size:.55em;font-weight:900;text-align:center}
+.cj-s,.gr-s{font-family:var(--font-fr);font-weight:700;font-size:clamp(1.5rem,7vw,2.2rem);color:var(--mf-ink);line-height:1.25}
+.gr-s{font-size:clamp(1.25rem,5.6vw,1.8rem)}
+.cj-s small{display:block;font-family:var(--font-ja);font-size:.45em;color:var(--muted);text-align:center}
+.cj-s .bl,.gr-s .bl{display:inline-block;min-width:3ch;border-bottom:5px solid var(--red);color:var(--green);text-align:center}
+.gd-prog{display:flex;gap:8px}
+.gd-prog i{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.6);border:3px solid #000}
+.gd-prog i.ok{background:#9DFF8A}
+.gd-prog i.cur{background:var(--mf-gold)}
+.gd-card{background:#fff;border:4px solid #000;border-radius:24px;box-shadow:0 5px 0 #000;padding:12px 26px;display:flex;flex-direction:column;align-items:center}
+.gd-card .p{font-size:clamp(4rem,20vw,5.6rem);line-height:1.1}
+.gd-card .w{font-family:var(--font-fr);font-weight:700;font-size:clamp(1.6rem,7vw,2.2rem);color:var(--mf-ink)}
+.gd-row{display:flex;gap:16px}
+.gd-btn{font-family:var(--font-pop);font-size:2.4rem;width:clamp(110px,32vw,150px);padding:10px 0;border-radius:22px;border:4px solid #000;box-shadow:0 6px 0 #000;color:#fff;-webkit-text-stroke:1.5px #000;paint-order:stroke fill}
+.gd-btn.le{background:#4F8BFF}
+.gd-btn.la{background:#FF5FB0}
+.gd-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #000}
+.gd-btn.wrong{animation:shake .4s;filter:grayscale(.7)}
+.groups.many button{font-size:clamp(.8rem,3.4vw,1.1rem)}
+.ww-ans .word.sent{font-size:1.35rem;max-width:22ch;text-align:center}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
     .ww .belt{animation-duration:var(--dur)!important;animation-iteration-count:infinite!important}
@@ -544,6 +595,7 @@ body.ww-on{overflow:hidden}
   </div>
 </div>
 
+<script src="curriculum.js"></script>
 <script>
 /* ============ DATA ============ */
 const THEMES = [
@@ -629,12 +681,19 @@ const THEMES = [
     {fr:'les cheveux', kana:'レ シュヴー', ja:'かみのけ', pic:'💇'},
   ]},
 ];
+/* A1 → B1 content lives in curriculum.js; the page still works without it. */
+const HAS_CUR = typeof CURRICULUM!=='undefined';
+const CUR = HAS_CUR ? {LEVELS, CONJ, GRAM, SPR:SPRITES_EXTRA, PERSONS} : {LEVELS:[{id:'pre',ja:'はじめて',fr:'Débutant',tag:'★'}], CONJ:{}, GRAM:{}, SPR:{}, PERSONS:[]};
+const PRON = CUR.PERSONS, PERS_JA = ['わたし','きみ','かれ・かのじょ','わたしたち','あなたたち','かれら'];
+THEMES.forEach(t=>t.lvl='pre');
+if(HAS_CUR) CURRICULUM.forEach(t=>{ if(t.kind==='phr') t.items.forEach(it=>{ it.sent=true; it.kana=''; }); THEMES.push(t); });
 const ACTS = [
   {id:'learn',   e:'📖', ja:'カードで まなぶ',      sub:'みて・きいて・いってみよう', ac:'var(--yellow)'},
   {id:'quiz',    e:'👂', ja:'きいて えらぼう',      sub:'どれかな? クイズ',           ac:'var(--green)'},
   {id:'memory',  e:'🃏', ja:'しんけいすいじゃく',   sub:'えと ことばを あわせよう',   ac:'var(--pink)'},
   {id:'balloon', e:'🎈', ja:'ふうせん わり',        sub:'きこえた ふうせんを タッチ', ac:'var(--orange)'},
 ];
+function actsFor(t){ return t.kind==='phr' ? ACTS.filter(a=>a.id==='learn'||a.id==='quiz') : ACTS; }
 const STICKERS = ['🥐','🗼','🧀','🎨','🚲','🌻','🐓','🍓','🎠','🥖','🦋','🌈','🍰','🐌','🏰','⛵','🌷','🎻','🐞','🍭','🦄','🌟','🎀','🍦','🐬','🎪','🧁','🪁','🌺','👑'];
 const PER_STICKER = 5;
 const PRAISE = ['Bravo !','Super !','Génial !','Très bien !','Magnifique !','Excellent !'];
@@ -645,7 +704,7 @@ const BALLOON_COLORS = ['var(--red)','var(--blue)','var(--yellow)','var(--green)
 const KEY = 'mimi-francais-v1';
 let S = {stars:0, done:{}, kana:true};
 try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
-S.ww = Object.assign({best:0, known:6, games:{}, music:true}, S.ww||{});
+S.ww = Object.assign({best:0, known:6, games:{}, music:true, lvl:'pre', kn:{}}, S.ww||{});
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
 const $ = (s,el=document)=>el.querySelector(s);
 const app = $('#app');
@@ -694,11 +753,14 @@ const SPRITES = {
   famille:[[0.04,0.64],[0.92,1.48],[1.79,2.63],[2.87,3.75],[3.89,4.82],[5.01,5.64],[5.87,6.48]],
   corps:[[0.15,0.93],[1.23,1.89],[2.28,3.17],[3.47,4.3],[4.59,5.28],[5.64,6.36],[6.68,7.37],[7.67,8.47]],
 };
-const WW_VOICE = ['title','choose','type','ufo','match','spell','write','sentence','combo','listen','truefalse','mole','feed','paint','count','which','boss','speedup','newword','oops','over','record'];
+const WW_VOICE = ['build','translate','listenS','conj','gender','gram','title','choose','type','ufo','match','spell','write','sentence','combo','listen','truefalse','mole','feed','paint','count','which','boss','speedup','newword','oops','over','record'];
 const SINGLE_FILES = ['hello','rehello','intro','parti','praise0','praise1','praise2','praise3','praise4','praise5'].concat(WW_VOICE.map(n=>'ww_'+n));
 const REC = new Map();   // text -> {file, seg}
 function buildRec(){
-  THEMES.forEach(t=>t.items.forEach((it,i)=>REC.set(it.fr, {file:t.id, seg:SPRITES[t.id][i]})));
+  THEMES.forEach(t=>t.items.forEach((it,i)=>{
+    if(SPRITES[t.id]) REC.set(it.fr, {file:t.id, seg:SPRITES[t.id][i]});
+    else if(CUR.SPR[t.id] && CUR.SPR[t.id][i] && !REC.has(it.fr)){ const [f,a,b]=CUR.SPR[t.id][i]; REC.set(it.fr, {file:f, seg:[a,b]}); }
+  }));
   PRAISE.forEach((p,i)=>REC.set(p, {file:'praise'+i}));
   REC.set('Bravo ! Bravo !', {file:'praise0'});
   REC.set("Bonjour ! Je m'appelle Mimi.", {file:'hello'});
@@ -810,12 +872,15 @@ function tick(){
 function picHTML(it){
   if(it.swatch) return `<span class="swatch" style="--sw:${it.swatch}"></span>`;
   if(it.digit!=null) return `<span class="digit">${it.digit}</span>`;
+  if(it.glyph) return `<span class="glyph kanji">${esc(it.glyph)}</span>`;
+  if(!it.pic) return `<span class="glyph">${esc(it.ja)}</span>`;
   return `<span class="emoji">${it.pic}</span>`;
 }
 function wordHTML(fr){
   const m = fr.match(/^(le |la |les |l')(.*)$/i);
   return m ? `<span class="art">${esc(m[1])}</span>${esc(m[2])}` : esc(fr);
 }
+function frHTML(it){ return it.sent||it.pseudo ? esc(it.fr) : wordHTML(it.fr); }
 function kanaHTML(it){ return S.kana ? esc(it.kana) : ''; }
 function updateStars(bump){
   $('#starCount').textContent = S.stars;
@@ -858,7 +923,7 @@ function screen(html){ try{ window.speechSynthesis && speechSynthesis.cancel(); 
 const mimiSVG = `<svg class="mimi" viewBox="0 0 120 120" aria-hidden="true"><use href="#mimi-art"/></svg>`;
 
 function dayItem(){
-  const all = THEMES.flatMap(t=>t.items.filter(i=>i.pic));
+  const all = THEMES.flatMap(t=>t.items.filter(i=>i.pic && !i.sent));
   const d = Math.floor(Date.now()/864e5);
   return all[d % all.length];
 }
@@ -879,19 +944,21 @@ function home(){
       <button class="speak" id="dayBtn">🔊</button>
     </div>
     <button class="wwbanner" id="wwBtn"><span class="bolt">⚡</span>
-      <span><b>Mini Français !</b><small>ミニゲームが どんどん くるよ! · ことば ${Math.min(S.ww.known,WORDS.length)}/${WORDS.length} · ベスト ${S.ww.best} pts</small></span>
+      <span><b>Mini Français !</b><small>ミニゲームが どんどん くるよ! · レベル ${wwLevel().tag} · ことば ${wwKnown()}/${WW_LEARN[S.ww.lvl].length} · ベスト ${S.ww.best} pts</small></span>
       <span class="go">▶</span></button>
     <h2>どこへ いこうかな?</h2>
     <p class="sub">すきな テーマを えらんでね。ぜんぶの メダルを あつめよう!</p>
-    <div class="map">${THEMES.map((t,i)=>{
-      const d=S.done[t.id]||{}; const all=ACTS.every(a=>d[a.id]);
+    ${CUR.LEVELS.map(L=>{ const ts=THEMES.filter(t=>t.lvl===L.id); return `
+    ${L.id==='pre'?'':`<div class="lvl-h"><b>${L.tag}</b><span>${L.ja} · ${esc(L.fr)}</span></div>`}
+    <div class="map">${ts.map((t,i)=>{
+      const d=S.done[t.id]||{}, acts=actsFor(t), all=acts.every(a=>d[a.id]);
       return `<button class="stop${all?' complete':''}" data-t="${t.id}">
         <span class="num">${i+1}</span>
         <span class="ic" style="--tc:${t.tc}">${t.icon}</span>
         <span class="ja">${t.ja}</span><span class="fr">${esc(t.fr)}</span>
-        <span class="badges">${ACTS.map(a=>`<span class="${d[a.id]?'on':''}" title="${a.ja}">${a.e}</span>`).join('')}</span>
-      </button>`;}).join('')}</div>
-    <div class="parent"><b>保護者の方へ：</b>🔊ボタンを押すと、フランス語ネイティブの声（Clémence）で単語が流れます。🐢ボタンでゆっくり聞けます。「ア よみかた」ボタンでカタカナの読み方を表示・非表示にできます（慣れてきたら非表示にするのがおすすめです）。カタカナはあくまで目安です。</div>
+        <span class="badges">${acts.map(a=>`<span class="${d[a.id]?'on':''}" title="${a.ja}">${a.e}</span>`).join('')}</span>
+      </button>`;}).join('')}</div>`; }).join('')}
+    <div class="parent"><b>保護者の方へ：</b>🔊ボタンを押すと、フランス語ネイティブの声（Clémence）で単語が流れます。🐢ボタンでゆっくり聞けます。「ア よみかた」ボタンでカタカナの読み方を表示・非表示にできます（慣れてきたら非表示にするのがおすすめです）。カタカナはあくまで目安です。<br>テーマはレベル別（★はじめて・A1・A2・B1）に並んでいます。「Mini Français !」ではタイトル画面でレベルを選ぶと、そのレベルの単語・文・文法がミニゲームで少しずつ増えていきます。</div>
   `);
   $('#hiBtn').onclick=()=>{ say(S.stars===0?'Bonjour ! Je m\'appelle Mimi.':'Re-bonjour ! On y va ?'); mimiJump(); };
   $('#dayBtn').onclick=()=>say(dw.fr);
@@ -907,7 +974,7 @@ function openTheme(tid){
   const t=T(tid), d=S.done[tid]||{};
   screen(`${backBtn()}
     <div class="thead"><span class="ic" style="--tc:${t.tc}">${t.icon}</span><div><h2>${t.ja}</h2><div class="fr">${esc(t.fr)}</div></div></div>
-    <div class="acts">${ACTS.map(a=>`<button class="act" style="--ac:${a.ac}" data-a="${a.id}">
+    <div class="acts">${actsFor(t).map(a=>`<button class="act" style="--ac:${a.ac}" data-a="${a.id}">
       <span class="e">${a.e}</span><span>${a.ja}<small>${a.sub}</small></span>${d[a.id]?'<span class="done">🎖️</span>':''}</button>`).join('')}</div>`);
   $('#backBtn').onclick=home;
   app.querySelectorAll('.act').forEach(b=>b.onclick=()=>{ sfx.flip(); openAct(tid,b.dataset.a); });
@@ -936,7 +1003,7 @@ function learn(tid){
     $('#prog').innerHTML=t.items.map((_,k)=>`<i class="${seen.has(k)?'on':''} ${k===i?'cur':''}"></i>`).join('');
     const count = it.digit ? `<div class="count">${'🍓'.repeat(it.digit)}</div>` : '';
     $('#card').innerHTML=`<div class="bigpic" id="bp" title="タッチすると きこえるよ">${picHTML(it)}</div>${count}
-      <div class="word">${wordHTML(it.fr)}</div><div class="kana">${kanaHTML(it)}</div><div class="ja">${esc(it.ja)}</div>`;
+      <div class="word${it.sent?' sent':''}">${frHTML(it)}</div><div class="kana">${kanaHTML(it)}</div><div class="ja">${esc(it.ja)}</div>`;
     $('#card').classList.remove('pop'); void $('#card').offsetWidth; $('#card').classList.add('pop');
     $('#bp').onclick=()=>say(it.fr);
     $('#prev').disabled = i===0;
@@ -964,7 +1031,7 @@ function quiz(tid){
   function draw(){
     const it=rounds[r]; tried=false;
     $('#prog').innerHTML=rounds.map((_,k)=>`<i class="${results[k]===true?'ok':results[k]===false?'on':''} ${k===r?'cur':''}"></i>`).join('');
-    $('#w').innerHTML=wordHTML(it.fr); $('#k').textContent=S.kana?it.kana:'';
+    $('#w').innerHTML=frHTML(it); $('#w').classList.toggle('sent',!!it.sent); $('#k').textContent=S.kana?it.kana:'';
     const opts=shuffle([it,...shuffle(t.items.filter(x=>x!==it)).slice(0,3)]);
     $('#ch').innerHTML=opts.map((o,k)=>`<button class="choice" data-k="${k}" aria-label="${esc(o.ja)}">${picHTML(o)}</button>`).join('');
     $('#ch').querySelectorAll('.choice').forEach((b,k)=>b.onclick=()=>choose(b,opts[k]));
@@ -1036,7 +1103,7 @@ function balloon(tid){
   function draw(){
     const it=targets[r]; missed=false; busy=false;
     $('#prog').innerHTML=targets.map((_,k)=>`<i class="${k<r?'on':''} ${k===r?'cur':''}"></i>`).join('');
-    $('#w').innerHTML=wordHTML(it.fr); $('#k').textContent=S.kana?it.kana:'';
+    $('#w').innerHTML=frHTML(it); $('#w').classList.toggle('sent',!!it.sent); $('#k').textContent=S.kana?it.kana:'';
     const opts=shuffle([it,...shuffle(t.items.filter(x=>x!==it)).slice(0,n-1)]);
     const cols=shuffle(BALLOON_COLORS);
     $('#sky').innerHTML=opts.map((o,k)=>`<button class="balloon" data-k="${k}" aria-label="${esc(o.ja)}"
@@ -1086,6 +1153,31 @@ const WORDS = (()=>{
   for(let i=0;i<max;i++) lists.forEach(l=>{ if(l[i]) out.push(l[i]); });
   return out;
 })();
+/* Each level: words round-robin across its themes, with a sentence after every two words. */
+const WW_LEARN = (()=>{
+  const L={pre:WORDS};
+  CUR.LEVELS.filter(l=>l.id!=='pre').forEach(l=>{
+    const ts=THEMES.filter(t=>t.lvl===l.id), wl=ts.filter(t=>!t.kind).map(t=>t.items), sents=ts.filter(t=>t.kind==='phr').flatMap(t=>t.items);
+    const words=[]; const max=Math.max(0,...wl.map(x=>x.length));
+    for(let i=0;i<max;i++) wl.forEach(x=>{ if(x[i]) words.push(x[i]); });
+    const out=[]; let si=0;
+    words.forEach((w,i)=>{ out.push(w); if(i%2===1 && si<sents.length) out.push(sents[si++]); });
+    while(si<sents.length) out.push(sents[si++]);
+    L[l.id]=out;
+  });
+  return L;
+})();
+if(!WW_LEARN[S.ww.lvl]) S.ww.lvl='pre';
+const wwLevel = () => CUR.LEVELS.find(l=>l.id===S.ww.lvl) || CUR.LEVELS[0];
+function wwKnown(lv=S.ww.lvl){ return Math.min(WW_LEARN[lv].length, lv==='pre' ? S.ww.known : (S.ww.kn[lv]||8)); }
+function wwAddKnown(lv=S.ww.lvl){ if(lv==='pre') S.ww.known++; else S.ww.kn[lv]=wwKnown(lv)+1; save(); }
+function splitSentence(fr){
+  const w=fr.split(' '); let end='';
+  const last=w[w.length-1];
+  if(last==='!'||last==='?'){ end=' '+last; w.pop(); }
+  else if(/\.$/.test(last)){ w[w.length-1]=last.slice(0,-1); end='.'; }
+  return {tiles:w, end};
+}
 const WW_LIVES = 4, WW_NEW_EVERY = 2, WW_SPEED_EVERY = 5, WW_BOSS_EVERY = 10, WW_COMBO = 3;
 const FRUITS = ['🍓','🍎','🍌','🥐','🧀','🍦'];
 const isPic = it => !!it.pic;
@@ -1293,7 +1385,7 @@ const WW_GAMES = [
   {id:'count', bg:'bg-candy', e:'🍓', fr:'Compte !', ja:'かずを かぞえよう', t:6.5, pool:p=>p.filter(isNum), ok:p=>p.filter(isNum).length>=2,
    run(c){
      const o=c.opts(Math.min(3,c.n)); const fr=pick(FRUITS);
-     c.arena.innerHTML=`${c.q(true)}<div class="groups" style="--n:${o.length}">${o.map(x=>`<button aria-label="${x.digit}">${fr.repeat(x.digit)}</button>`).join('')}</div>`;
+     c.arena.innerHTML=`${c.q(true)}<div class="groups${o.some(x=>x.digit>10)?' many':''}" style="--n:${o.length}">${o.map(x=>`<button aria-label="${x.digit}">${fr.repeat(x.digit)}</button>`).join('')}</div>`;
      c.bind('.groups button',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
    }},
   {id:'which', bg:'bg-burst', e:'🅰️', fr:'A ou B ?', ja:'どっちかな?', t:7.5, ok:p=>p.length>=2, selfSpeak:true,
@@ -1306,6 +1398,76 @@ const WW_GAMES = [
      const seq=()=>o.forEach((x,k)=>c.later(()=>{ bs.forEach(b=>b.classList.remove('lit')); bs[k].classList.add('lit'); say(x.fr); c.later(()=>bs[k].classList.remove('lit'),900); },350+k*1250));
      c.replay=seq; seq();
      c.bind('.ab button',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  /* ---- sentence & grammar games (A1 → B1) ---- */
+  {id:'build', bg:'bg-sky', e:'🧩', fr:'Construis la phrase !', ja:'ことばを ならべて ぶんを つくろう', t:7, tPer:1.3, minT:9, selfSpeak:true,
+   pool:(p,x)=>x.sents.filter(s=>splitSentence(s.fr).tiles.length<=10), ok:(p,x)=>x.sents.some(s=>splitSentence(s.fr).tiles.length<=10),
+   run(c){
+     const {tiles,end}=splitSentence(c.target.fr);
+     let bank=shuffle(tiles.map((w,i)=>({w,i}))); if(tiles.length>1) while(bank.every((x,k)=>x.w===tiles[k])) bank=shuffle(bank);
+     const line=[];
+     c.arena.innerHTML=`<div class="bd-ja"><span class="p">${picHTML(c.target)}</span><span>${esc(c.target.ja)}</span></div>
+       <div class="bd-line" aria-live="polite"></div><div class="bd-bank"></div>`;
+     const L=$('.bd-line',c.arena), B=$('.bd-bank',c.arena);
+     const draw=(bad)=>{
+       L.innerHTML=line.map((x,k)=>`<button class="bd-tile in ${bad?'bad':''}" data-k="${k}">${esc(x.w)}</button>`).join('')+(line.length===tiles.length?`<span class="bd-end">${esc(end)}</span>`:'');
+       B.innerHTML=bank.map((x,k)=>`<button class="bd-tile" data-k="${k}">${esc(x.w)}</button>`).join('');
+       L.querySelectorAll('.bd-tile').forEach(b=>b.onclick=()=>{ if(c.done) return; bank.push(line.splice(+b.dataset.k,1)[0]); sfx.flip(); draw(); });
+       B.querySelectorAll('.bd-tile').forEach(b=>b.onclick=()=>{ if(c.done) return; line.push(bank.splice(+b.dataset.k,1)[0]); sfx.flip(); draw(); check(); });
+     };
+     const check=()=>{ if(line.length<tiles.length) return;
+       if(line.map(x=>x.w).join(' ')===tiles.join(' ')){ L.classList.add('ok'); say(c.target.fr); c.win(1300); } else { draw(true); c.lose(); } };
+     draw();
+   }},
+  {id:'translate', bg:'bg-swirl', e:'🌏', fr:'Traduis la phrase !', ja:'フランスごで どれ?', t:8, minT:6, selfSpeak:true,
+   pool:(p,x)=>x.sents, ok:(p,x)=>x.sents.length>=3,
+   run(c){
+     const o=c.opts(3);
+     c.arena.innerHTML=`<div class="bd-ja big"><span class="p">${picHTML(c.target)}</span><span>${esc(c.target.ja)}</span></div>
+       <div class="mf-col">${o.map(x=>`<button class="mf-btn sent">${esc(x.fr)}</button>`).join('')}</div>`;
+     c.bind('.mf-btn',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); say(x.fr); c.win(1200); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'listenS', bg:'bg-teal', e:'🎧', fr:'Écoute la phrase !', ja:'きいて、いみを えらぼう', t:8, minT:6,
+   pool:(p,x)=>x.sents, ok:(p,x)=>x.sents.length>=3,
+   run(c){
+     const o=c.opts(3);
+     c.arena.innerHTML=`${c.q(false)}<div class="mf-col">${o.map(x=>`<button class="mf-btn sent ja"><span class="p">${picHTML(x)}</span>${esc(x.ja)}</button>`).join('')}</div>`;
+     c.bind('.mf-btn',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(800); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'conj', bg:'bg-lemon', e:'🔤', fr:'Conjugue le verbe !', ja:'ただしい かたちを えらぼう', t:6.5, minT:5, selfSpeak:true,
+   pool:(p,x)=>x.conj, ok:(p,x)=>x.conj.length>0,
+   run(c){
+     const t=c.target, v=t.v, k=t.k, form=v.f[k];
+     const o=shuffle([form, ...shuffle([...new Set(v.f)].filter(f=>f!==form)).slice(0,2)]);
+     const subj = t.elide ? "J'" : PRON[k][0].toUpperCase()+PRON[k].slice(1)+' ';
+     c.arena.innerHTML=`<div class="cj-card"><div class="cj-verb">${esc(v.inf)}${v.tense?` <em>${esc(v.tense)}</em>`:''}<small>${esc(v.ja)}</small></div>
+       <div class="cj-s">${esc(subj)}<span class="bl">___</span><small>${esc(PERS_JA[k])}</small></div></div>
+       <div class="mf-row">${o.map(f=>`<button class="mf-btn">${esc(f)}</button>`).join('')}</div>`;
+     c.bind('.mf-btn',o,(b,f)=>{ if(f===form){ b.classList.add('right'); $('.cj-s .bl',c.arena).textContent=form; say(t.fr); c.win(900); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'gender', bg:'bg-candy', e:'⚖️', fr:'Le ou la ?', ja:'「le」かな? 「la」かな?', t:7, minT:5, selfSpeak:true,
+   pool:p=>p.filter(x=>/^(le|la) /.test(x.fr)), ok:(p,x)=>x.lvl!=='pre' && p.filter(x=>/^(le|la) /.test(x.fr)).length>=3,
+   run(c){
+     const list=[c.target, ...shuffle(c.pool.filter(x=>x!==c.target)).slice(0,2)]; let i=0;
+     c.arena.innerHTML=`<div class="gd-prog"></div><div class="gd-card"></div>
+       <div class="gd-row"><button class="gd-btn le">le</button><button class="gd-btn la">la</button></div>`;
+     const draw=()=>{ const it=list[i];
+       $('.gd-prog',c.arena).innerHTML=list.map((_,k)=>`<i class="${k<i?'ok':k===i?'cur':''}"></i>`).join('');
+       $('.gd-card',c.arena).innerHTML=`<div class="p pop">${picHTML(it)}</div><div class="w">___ ${esc(noun(it.fr))}</div>`; };
+     const pickA=a=>{ if(c.done) return; const it=list[i];
+       if(it.fr.startsWith(a+' ')){ say(it.fr); sfx.pop(); i++; if(i>=list.length) c.win(700); else draw(); }
+       else { c.setTarget(it,true); $('.gd-btn.'+a,c.arena).classList.add('wrong'); c.lose(); } };
+     $('.gd-btn.le',c.arena).onclick=()=>pickA('le'); $('.gd-btn.la',c.arena).onclick=()=>pickA('la');
+     draw();
+   }},
+  {id:'gram', bg:'bg-mint', e:'✍️', fr:'Choisis la bonne forme !', ja:'ただしい ことばを えらぼう', t:8, minT:6, selfSpeak:true,
+   pool:(p,x)=>x.gram, ok:(p,x)=>x.gram.length>0,
+   run(c){
+     const g=c.target.g, o=shuffle([g.a,...g.o]);
+     const [a,b]=g.s.split('___');
+     c.arena.innerHTML=`<div class="cj-card"><div class="gr-s">${esc(a)}<span class="bl">___</span>${esc(b)}</div><small>${esc(g.ja)}</small></div>
+       <div class="mf-row">${o.map(f=>`<button class="mf-btn">${esc(f)}</button>`).join('')}</div>`;
+     c.bind('.mf-btn',o,(btn,f)=>{ if(f===g.a){ btn.classList.add('right'); $('.gr-s',c.arena).textContent=c.target.fr; say(c.target.fr); c.win(1100); } else { btn.classList.add('wrong'); c.lose(); } });
    }},
 ];
 const WW_BOSS = {id:'boss', bg:'bg-boss', e:'👑', fr:'Le grand défi !', ja:'ボス! 4ひき たたけ!', t:20, boss:true, ok:p=>p.length>=3, run:c=>moleGame(c,4)};
@@ -1425,7 +1587,8 @@ function wwTitle(){
     <span class="mf-deco" style="left:2%;bottom:-6px">${coolMimi(130)}</span>
     <div class="mf-logo"><span class="star">⭐</span><span class="flag">🇫🇷</span><span class="l1">Mini</span><span class="l2">Français !</span></div>
     <div class="mf-ribbon">Apprends en t'amusant !</div>
-    <div class="mf-stats">ことば ${Math.min(S.ww.known,WORDS.length)}/${WORDS.length} · ベスト ${S.ww.best} pts</div>
+    ${CUR.LEVELS.length>1?`<div class="mf-levels">${CUR.LEVELS.map(l=>`<button data-l="${l.id}" class="${l.id===S.ww.lvl?'on':''}" aria-pressed="${l.id===S.ww.lvl}">${l.tag}<small>${l.ja}</small></button>`).join('')}</div>`:''}
+    <div class="mf-stats" id="mfStats">ことば ${wwKnown()}/${WW_LEARN[S.ww.lvl].length} · ベスト ${S.ww.best} pts</div>
     <div class="mf-menu"><button class="mf-play-btn" id="mfGo">Jouer !</button>
       <button class="mf-pill" id="mfOpt">Options</button>
       <div class="mf-opts" id="mfOpts" hidden>
@@ -1434,6 +1597,9 @@ function wwTitle(){
       <button class="mf-pill" id="mfQuit">Quitter</button></div>`, 'bg-sky');
   MUSIC.mode('title'); MUSIC.tempo(116); MUSIC.start();
   $('#mfGo').onclick=()=>{ sfx.win(); wwRun(); };
+  document.querySelectorAll('.mf-levels button').forEach(b=>b.onclick=()=>{ S.ww.lvl=b.dataset.l; save(); sfx.flip();
+    document.querySelectorAll('.mf-levels button').forEach(x=>{ x.classList.toggle('on',x===b); x.setAttribute('aria-pressed',x===b); });
+    $('#mfStats').textContent=`ことば ${wwKnown()}/${WW_LEARN[S.ww.lvl].length} · ベスト ${S.ww.best} pts`; });
   $('#mfOpt').onclick=()=>{ $('#mfOpts').hidden=!$('#mfOpts').hidden; sfx.flip(); };
   $('#mfMus').onclick=()=>{ $('#wwM').click(); $('#mfMus').textContent=`🎵 Musique : ${S.ww.music?'ON':'OFF'}`; };
   $('#mfKana').onclick=()=>{ S.kana=!S.kana; save(); $('#kanaBtn')?.setAttribute('aria-pressed',S.kana); $('#mfKana').textContent=`ア よみかた : ${S.kana?'ON':'OFF'}`; };
@@ -1445,7 +1611,23 @@ function wwRun(){
   MUSIC.mode('main'); MUSIC.tempo(128); MUSIC.start();
   wwStatus(); wwNext();
 }
-function wwPool(){ return WORDS.slice(0, Math.min(WORDS.length, S.ww.known)); }
+function wwPool(){
+  const lv=S.ww.lvl, idx=CUR.LEVELS.findIndex(l=>l.id===lv), lower=CUR.LEVELS.slice(0,Math.max(0,idx)).map(l=>l.id);
+  const learned=WW_LEARN[lv].slice(0, wwKnown(lv));
+  const old=lower.flatMap(id=>WW_LEARN[id]);
+  const words=old.filter(x=>!x.sent).concat(learned.filter(x=>!x.sent));
+  const sents=old.filter(x=>x.sent).concat(learned.filter(x=>x.sent));
+  R.cur=new Set(learned);
+  const lvls=lower.concat(lv).filter(id=>id!=='pre');
+  const conj=lvls.slice(-2).flatMap(id=>(CUR.CONJ[id]||[]).flatMap(v=>v.f.map((f,k)=>{
+    const elide = k===0 && /^[aeiouéèêh]/.test(f);
+    return {pseudo:true, v, k, elide, fr:(elide?"j'":PRON[k]+' ')+f, ja:`${v.ja}・${PERS_JA[k]}`};
+  })));
+  const gram=lvls.slice(-2).flatMap(id=>(CUR.GRAM[id]||[]).map(g=>({pseudo:true, g, ja:g.ja,
+    fr:g.s.replace(/___( ?)/, (m,sp)=> g.a.endsWith("'") ? g.a : g.a+sp)})));
+  R.ctx={lvl:lv, sents, conj, gram};
+  return words;
+}
 function wwClear(){ if(!R) return; R.timers.forEach(clearTimeout); R.timers=[]; cancelAnimationFrame(R.raf); R.keyh=null; R.tok++; }
 function wwLater(fn,ms){ const tok=R.tok; R.timers.push(setTimeout(()=>{ if(R && R.tok===tok) fn(); },ms)); }
 function wwVoice(n){
@@ -1464,7 +1646,7 @@ function wwNext(){
   let g;
   if(boss) g=WW_BOSS;
   else{
-    const avail=WW_GAMES.filter(x=>x.ok(pool) && x.id!==R.last);
+    const avail=WW_GAMES.filter(x=>x.ok(pool, R.ctx) && x.id!==R.last);
     const unseen=avail.filter(x=>!S.ww.games[x.id]);
     g = unseen.length && Math.random()<.6 ? unseen[0] : pick(avail);
   }
@@ -1485,11 +1667,13 @@ function wwNext(){
 
 function wwPlay(g, all){
   wwClear();
-  const pool = g.pool ? g.pool(all) : all;
+  const pool = g.pool ? g.pool(all, R.ctx) : all;
   const f = g.boss ? Math.max(.75, 1-.04*R.level) : Math.max(.55, 1-.08*R.level);
-  const time = Math.max(g.minT||0, g.t * f);
-  let target = pool.find(x=>x===R.focus[0]) || pick(pool);
+  const fresh = pool.filter(x=>R.cur.has(x));
+  let target = pool.find(x=>x===R.focus[0]) || (fresh.length && Math.random()<.7 ? pick(fresh) : pick(pool));
   if(target===R.focus[0]) R.focus.shift();
+  const base = g.t + (g.tPer ? g.tPer*splitSentence(target.fr).tiles.length : 0);
+  const time = Math.max(g.minT||0, base * f);
   const a=$('#wwA'); a.className='ww-arena '+g.bg;
   a.innerHTML=`<div class="mf-title">${esc(g.fr)}<small>${g.ja}</small></div><div class="mf-clock" id="wwC"><i></i><span>${Math.ceil(time)}</span></div><div class="mf-play"></div>`;
   $('#wwB').classList.remove('idle');
@@ -1504,8 +1688,8 @@ function wwPlay(g, all){
     q(word){ return `<div class="ww-q"><button class="bigspeak ww-ear" aria-label="もういちど きく">🔊</button>${word?`<div><div class="word">${wordHTML(target.fr)}</div><div class="kana">${S.kana?esc(target.kana):''}</div></div>`:''}</div>`; },
     bind(sel, list, fn){ play.querySelectorAll(sel).forEach((b,k)=>b.onclick=()=>{ if(!c.done) fn(b, list[k]); }); },
     setTarget(t, quiet){ target=t; if(quiet) return; const w=$('.ww-q .word',play), k=$('.ww-q .kana',play); if(w) w.innerHTML=wordHTML(t.fr); if(k) k.textContent=S.kana?t.kana:''; setTimeout(()=>say(t.fr),300); },
-    win(delay=350){ if(c.done) return; c.done=true; wwFreeze(); sfx.ok(); setTimeout(()=>wwEnd(true,g,target), delay); },
-    lose(){ if(c.done) return; c.done=true; wwFreeze(); sfx.no(); setTimeout(()=>wwEnd(false,g,target), 500); },
+    win(delay=350){ if(c.done) return; c.done=true; wwFreeze(); sfx.ok(); setTimeout(()=>{ if(R && R.c===c) wwEnd(true,g,target); }, delay); },
+    lose(){ if(c.done) return; c.done=true; wwFreeze(); sfx.no(); setTimeout(()=>{ if(R && R.c===c) wwEnd(false,g,target); }, 500); },
     replay:null,
   };
   R.c=c; S.ww.games[g.id]=true; save();
@@ -1545,13 +1729,13 @@ function wwEnd(ok, g, target){
   }else{
     const ms=wwVoice('oops');
     wwScreen(`<div class="mf-big">Oh là là !</div><div class="mf-sub">こたえは…</div>
-      <div class="ww-ans"><div class="p">${picHTML(target)}</div><div class="word">${wordHTML(target.fr)}</div>
+      <div class="ww-ans"><div class="p">${picHTML(target)}</div><div class="word${target.sent||target.pseudo?' sent':''}">${frHTML(target)}</div>
       <div class="kana">${esc(target.kana)}</div><div>${esc(target.ja)}</div></div>`, 'bg-alarm');
     wwLater(()=>say(target.fr), ms ? ms+100 : 300);
     R.loseMs=(ms ? ms+100 : 300)+1700;
   }
   const after=()=>{
-    if(ok && R.wins%WW_NEW_EVERY===0 && S.ww.known<WORDS.length) return wwNewWord();
+    if(ok && R.wins%WW_NEW_EVERY===0 && wwKnown()<WW_LEARN[S.ww.lvl].length) return wwNewWord();
     wwNext();
   };
   wwLater(()=>{
@@ -1572,10 +1756,10 @@ function wwCombo(then){
 
 function wwNewWord(){
   wwClear();
-  const w=WORDS[S.ww.known]; S.ww.known++; save();
+  const w=WW_LEARN[S.ww.lvl][wwKnown()]; wwAddKnown();
   R.fresh.push(w); R.focus=[w,w];
   wwScreen(`<div class="mf-tag gold">✨ NEW ! あたらしい ことば</div>
-    <div class="ww-ans pop"><div class="p">${picHTML(w)}</div><div class="word">${wordHTML(w.fr)}</div>
+    <div class="ww-ans pop"><div class="p">${picHTML(w)}</div><div class="word${w.sent?' sent':''}">${frHTML(w)}</div>
       <div class="kana">${esc(w.kana)}</div><div>${esc(w.ja)}</div></div>
     <div class="row"><button class="speak" id="wwNs">🔊</button><button class="speak slow" id="wwNsl">🐢</button><button class="mf-btn" id="wwGo">おぼえた ! ▶</button></div>`, 'bg-teal');
   tone([784,988,1175,1568],.08,'triangle',.1);
