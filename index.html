@@ -589,7 +589,8 @@ const SPRITES = {
   famille:[[0.04,0.64],[0.92,1.48],[1.79,2.63],[2.87,3.75],[3.89,4.82],[5.01,5.64],[5.87,6.48]],
   corps:[[0.15,0.93],[1.23,1.89],[2.28,3.17],[3.47,4.3],[4.59,5.28],[5.64,6.36],[6.68,7.37],[7.67,8.47]],
 };
-const SINGLE_FILES = ['hello','rehello','intro','parti','praise0','praise1','praise2','praise3','praise4','praise5'];
+const WW_VOICE = ['listen','truefalse','mole','catch','feed','paint','count','which','boss','speedup','newword','oops','over','record'];
+const SINGLE_FILES = ['hello','rehello','intro','parti','praise0','praise1','praise2','praise3','praise4','praise5'].concat(WW_VOICE.map(n=>'ww_'+n));
 const REC = new Map();   // text -> {file, seg}
 function buildRec(){
   THEMES.forEach(t=>t.items.forEach((it,i)=>REC.set(it.fr, {file:t.id, seg:SPRITES[t.id][i]})));
@@ -609,7 +610,7 @@ function loadRec(file){
     .then(b=>{ recUrls[file] = URL.createObjectURL(new Blob([b.slice(0)],{type:'audio/mpeg'})); return audioCtx().decodeAudioData(b); });
   return recBufs[file];
 }
-function preloadRec(){ Object.keys(SPRITES).concat(SINGLE_FILES).forEach(f=>loadRec(f).catch(()=>{ recOk=false; })); }
+function preloadRec(){ Object.keys(SPRITES).concat(SINGLE_FILES).forEach(f=>loadRec(f).then(b=>{ recDur[f]=b.duration; }).catch(()=>{ recOk=false; })); }
 function stopRec(){
   try{ curSrc && curSrc.stop(); }catch(e){} curSrc=null;
   if(curEl){ curEl.pause(); curEl=null; } clearTimeout(curT);
@@ -629,6 +630,9 @@ async function playRec(r, slow){
   src.start(0, a, b-a); curSrc = src;
 }
 function useRec(){ return recOk; }
+/* Speed-challenge voice lines (ElevenLabs · Clémence). Returns the clip length in ms. */
+const recDur = {};
+function wwVoice(n){ const f='ww_'+n; if(!useRec()) return 0; loadRec(f).then(b=>{ recDur[f]=b.duration; return playRec({file:f}); }).catch(()=>{}); return Math.round((recDur[f]||1.3)*1000); }
 
 function say(text, slow){
   const r = REC.get(text);
@@ -1133,11 +1137,12 @@ function wwNext(){
     <svg class="mimi" viewBox="0 0 120 120" aria-hidden="true"><use href="#mimi-art"/></svg>
     <div class="ww-num">${boss?'👑':n}</div><div class="ww-lbl">${boss?'ボス ステージ!':'ゲーム'}</div>`, boss?'boss':'');
   tone(boss?[262,262,392,523]:sped?[523,659,784,1047,1319]:[523,784],.1,'square',.07);
+  if(sped) wwLater(()=>wwVoice('speedup'), 450);
   wwLater(()=>{
     wwArena(`${isNewGame?'<div class="ww-tag">NEW GAME! あたらしい ゲーム</div>':''}
       <div class="ww-cmd"><span class="e">${g.e}</span>${g.ja}</div><div class="ww-cmdfr">${esc(g.fr)}</div>`, boss?'boss':'');
-    sfx.flip();
-    wwLater(()=>wwPlay(g, pool), isNewGame?1700:1050);
+    const ms = wwVoice(g.id);
+    wwLater(()=>wwPlay(g, pool), Math.max(isNewGame?1700:1050, ms+150));
   }, sped?1900:1250);
 }
 
@@ -1198,13 +1203,15 @@ function wwEnd(ok, g, target){
     wwArena(`<div class="ww-big">💥</div><div class="ww-lbl">こたえは…</div>
       <div class="ww-ans"><div class="p">${picHTML(target)}</div><div class="word">${wordHTML(target.fr)}</div>
       <div class="kana">${esc(target.kana)}</div><div>${esc(target.ja)}</div></div>`, 'lose');
-    wwLater(()=>say(target.fr), 300);
+    const ms = wwVoice('oops');
+    wwLater(()=>say(target.fr), ms ? ms+100 : 300);
+    R.loseMs = (ms ? ms+100 : 300) + 1700;
   }
   wwLater(()=>{
     if(R.lives<=0) return wwOver();
     if(ok && R.wins%WW_NEW_EVERY===0 && S.ww.known<WORDS.length) return wwNewWord();
     wwNext();
-  }, ok?(g.boss?1700:1050):2300);
+  }, ok?(g.boss?1700:1050):Math.max(2300, R.loseMs||0));
 }
 
 function wwNewWord(){
@@ -1216,8 +1223,9 @@ function wwNewWord(){
       <div class="kana">${esc(w.kana)}</div><div>${esc(w.ja)}</div></div>
     <div class="row"><button class="speak" id="wwNs">🔊</button><button class="speak slow" id="wwNsl">🐢</button><button class="nav go" id="wwGo">おぼえた! ▶</button></div>`);
   tone([784,988,1175,1568],.08,'triangle',.1);
-  wwLater(()=>say(w.fr), 500);
-  wwLater(()=>say(w.fr,true), 1900);
+  const ms = wwVoice('newword');
+  wwLater(()=>say(w.fr), ms+150);
+  wwLater(()=>say(w.fr,true), ms+1550);
   $('#wwNs').onclick=()=>say(w.fr);
   $('#wwNsl').onclick=()=>say(w.fr,true);
   $('#wwGo').onclick=()=>{ sfx.flip(); wwNext(); };
@@ -1234,7 +1242,8 @@ function wwOver(){
     ${stars?`<div class="ww-lbl">⭐ ×${stars} ゲット!</div>`:''}
     <div class="row"><button class="nav" id="wwHome">🏠 もどる</button><button class="nav go" id="wwAgain">🔁 もういちど</button></div>`, rec&&R.score>0?'win':'');
   if(stars) addStars(stars);
-  if(rec&&R.score>0){ sfx.win(); confetti(160); setTimeout(()=>say('Bravo ! Bravo !'),400); }
+  if(rec&&R.score>0){ sfx.win(); confetti(160); setTimeout(()=>wwVoice('record'),400); }
+  else setTimeout(()=>wwVoice('over'),300);
   $('#wwHome').onclick=wwQuit;
   $('#wwAgain').onclick=()=>{ sfx.flip(); wwStart(); };
   $('#wwAgain').focus();
