@@ -249,8 +249,131 @@ h2{font-size:1.35rem;font-weight:900;margin:0 0 4px;text-wrap:balance}
 .sp-btn:active{transform:translateY(4px)}
 @keyframes spPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 
+/* ---------- ⚡ speed challenge (micro-games) ---------- */
+.wwbanner{width:100%;display:flex;align-items:center;gap:14px;text-align:left;margin-bottom:26px;padding:16px 18px;border-radius:28px;border:3px solid var(--ink);color:var(--btn-ink);
+  background:repeating-linear-gradient(-45deg,var(--yellow) 0 26px,color-mix(in srgb,var(--yellow) 70%,var(--orange)) 26px 52px);box-shadow:0 6px 0 var(--ink);animation:wwSlide 2.5s linear infinite}
+.wwbanner:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.wwbanner .bolt{font-size:2.6rem;width:64px;height:64px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+.wwbanner b{display:block;font-size:1.3rem;font-weight:900;line-height:1.25}
+.wwbanner small{display:block;font-weight:700;font-size:.85rem;line-height:1.4}
+.wwbanner .go{margin-left:auto;font-size:1.4rem;width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;border:3px solid var(--ink)}
+@keyframes wwSlide{to{background-position:74px 0}}
+body.ww-on{overflow:hidden}
+.ww{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;background:var(--sky);touch-action:manipulation;user-select:none;-webkit-user-select:none;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.ww-top{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.ww-hearts{display:flex;gap:2px;font-size:1.6rem;line-height:1;margin-right:auto}
+.ww-hearts span.lost{filter:grayscale(1);opacity:.25}
+.ww-hearts span.break{animation:hbreak .6s}
+@keyframes hbreak{30%{transform:scale(1.6) rotate(-15deg)}}
+.ww-x{width:42px;height:42px;border-radius:50%;background:var(--paper);border:2px solid var(--line);font-weight:900;font-size:1.1rem}
+.ww-arena{position:relative;flex:1;min-height:0;margin:0 16px;border:4px solid var(--ink);border-radius:28px;background:var(--paper);overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:14px;text-align:center}
+.ww-arena.boss{background:radial-gradient(circle at 50% 120%,color-mix(in srgb,var(--violet) 45%,var(--paper)),var(--paper) 70%)}
+.ww-fuse{position:relative;height:22px;margin:12px 16px 14px 52px;border-radius:999px;background:var(--line)}
+.ww-fuse::before{content:"💣";position:absolute;left:-40px;top:50%;transform:translateY(-50%);font-size:1.8rem}
+.ww-fuse i{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:999px;background:repeating-linear-gradient(90deg,var(--orange) 0 10px,var(--yellow) 10px 20px)}
+.ww-fuse i::after{content:"🔥";position:absolute;right:-12px;top:50%;transform:translateY(-55%);font-size:1.5rem}
+.ww-fuse.off i{opacity:0}
+.ww-fuse.hurry i::after{animation:hurry .25s infinite alternate}
+@keyframes hurry{to{transform:translateY(-55%) scale(1.4)}}
+/* interstitials */
+.ww-stage{position:absolute;inset:0;overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:safe center;gap:10px;padding:16px;
+  background:repeating-linear-gradient(-45deg,var(--yellow) 0 34px,color-mix(in srgb,var(--yellow) 70%,var(--orange)) 34px 68px);color:var(--btn-ink);animation:wwSlide 1.2s linear infinite}
+.ww-stage.boss{background:repeating-linear-gradient(-45deg,var(--violet) 0 34px,color-mix(in srgb,var(--violet) 70%,#000) 34px 68px);color:#fff}
+.ww-stage.lose{background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--red) 30%,var(--paper)) 0 34px,color-mix(in srgb,var(--red) 18%,var(--paper)) 34px 68px);color:var(--ink)}
+.ww-stage.win{background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--green) 40%,var(--paper)) 0 34px,color-mix(in srgb,var(--green) 25%,var(--paper)) 34px 68px);color:var(--ink)}
+.ww-stage .mimi{width:min(130px,28vh);height:auto;aspect-ratio:1}
+.ww-num{font-family:var(--font-fr);font-weight:700;font-size:clamp(4rem,20vw,7rem);line-height:1;animation:popin .4s cubic-bezier(.3,1.6,.6,1)}
+.ww-lbl{font-weight:900;font-size:1.2rem}
+.ww-tag{display:inline-block;background:var(--red);color:#fff;font-weight:900;border-radius:999px;padding:4px 14px;border:3px solid var(--ink);animation:popin .4s cubic-bezier(.3,1.6,.6,1)}
+.ww-cmd{font-weight:900;font-size:clamp(2.4rem,11vw,4.4rem);line-height:1.1;animation:cmd .45s cubic-bezier(.3,1.7,.5,1);text-shadow:0 4px 0 rgba(255,255,255,.6)}
+.ww-cmd .e{display:block;font-size:1.3em}
+.ww-cmdfr{font-family:var(--font-fr);font-weight:700;font-size:1.4rem}
+@keyframes cmd{from{transform:scale(2.4) rotate(-8deg);opacity:0}}
+.ww-ans{background:var(--paper);border:4px solid var(--ink);border-radius:26px;padding:14px 22px;box-shadow:0 6px 0 var(--ink);display:flex;flex-direction:column;align-items:center;gap:2px}
+.ww-ans .p{font-size:4rem;line-height:1.1}
+.ww-ans .word{font-family:var(--font-fr);font-size:2rem;font-weight:700;color:var(--blue);line-height:1.15}
+.ww-ans .word .art{font-size:.65em;color:var(--muted)}
+.ww-ans .kana{color:var(--pink);font-weight:900}
+.ww-big{font-size:clamp(3rem,14vw,5rem);line-height:1;animation:popin .35s cubic-bezier(.3,1.6,.6,1)}
+.ww-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:460px}
+.ww-words span{background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-family:var(--font-fr);font-weight:700;color:var(--ink)}
+.ww-stage .nav:not(.go){color:var(--ink)}
+/* shared game bits */
+.ww-q{display:flex;align-items:center;gap:12px;justify-content:center}
+.ww-q .bigspeak{width:72px;height:72px;font-size:2rem;flex:none}
+.ww-q .word{font-family:var(--font-fr);font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;color:var(--blue);line-height:1.1;text-align:left}
+.ww-q .word .art{font-size:.65em;color:var(--muted)}
+.ww-q .kana{color:var(--pink);font-weight:900;text-align:left;font-size:.95rem}
+.wg-opts{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;width:min(520px,100%)}
+.wg-opts .choice{font-size:clamp(2.4rem,11vw,3.8rem);aspect-ratio:1.15}
+.wg-opts .choice .digit{font-size:.85em}
+.wg-pic{font-size:clamp(5rem,26vw,8rem);line-height:1}
+.wg-pic .swatch{border-width:5px}
+.wg-yn{display:flex;gap:18px}
+.wg-yn button{width:clamp(96px,28vw,130px);aspect-ratio:1;border-radius:30px;font-size:clamp(3rem,13vw,4.4rem);border:4px solid var(--ink);box-shadow:0 6px 0 var(--ink);background:var(--paper)}
+.wg-yn button:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ink)}
+.wg-yn .y{background:color-mix(in srgb,var(--green) 30%,var(--paper))}
+.wg-yn .n{background:color-mix(in srgb,var(--red) 22%,var(--paper))}
+.wg-yn button.right{animation:yay .5s;border-color:var(--green)}
+.wg-yn button.wrong{animation:shake .4s;opacity:.5}
+/* mole */
+.holes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px;width:min(460px,100%)}
+.hole{position:relative;aspect-ratio:1;overflow:hidden;border-radius:16px}
+.hole::after{content:"";position:absolute;left:4%;right:4%;bottom:0;height:30%;border-radius:50%;background:color-mix(in srgb,var(--ink) 75%,var(--orange));pointer-events:none}
+.mole{position:absolute;left:12%;right:12%;bottom:8%;height:80%;border-radius:46% 46% 18% 18%;background:var(--paper);border:3px solid var(--ink);display:grid;place-items:center;
+  font-size:clamp(2rem,9vw,3rem);transform:translateY(115%);transition:transform .16s ease-out;z-index:1}
+.mole.up{transform:translateY(0)}
+.mole.bonk{background:color-mix(in srgb,var(--green) 40%,var(--paper))}
+.mole.miss{background:color-mix(in srgb,var(--red) 30%,var(--paper))}
+.ww-boss-prog{font-weight:900;font-size:1.1rem}
+/* catch */
+.ww-top-q{position:absolute;top:10px;left:0;right:0;z-index:2}
+.fall{position:absolute;top:-90px;width:clamp(64px,17vw,84px);aspect-ratio:1;border-radius:50%;background:var(--paper);border:3px solid var(--ink);box-shadow:0 4px 0 var(--ink);
+  display:grid;place-items:center;font-size:clamp(2rem,9vw,2.8rem);transform:translateX(-50%);animation:fall var(--dur) linear var(--del) forwards}
+.fall .digit,.fall .swatch{font-size:.9em}
+@keyframes fall{to{top:calc(100% + 10px)}}
+.fall.right{background:color-mix(in srgb,var(--green) 40%,var(--paper));animation-play-state:paused}
+.fall.wrong{background:color-mix(in srgb,var(--red) 30%,var(--paper));animation-play-state:paused}
+.ww-ground{position:absolute;left:0;right:0;bottom:0;height:16px;background:var(--green);opacity:.7}
+/* feed */
+.beltwrap{width:100%;overflow:hidden;padding:8px 0;border-block:4px dashed var(--line)}
+.belt{display:flex;gap:18px;width:max-content;animation:belt var(--dur) linear infinite}
+@keyframes belt{to{transform:translateX(-50%)}}
+.belt button{width:clamp(70px,19vw,90px);aspect-ratio:1;border-radius:22px;background:var(--paper);border:3px solid var(--ink);box-shadow:0 4px 0 var(--ink);font-size:clamp(2.2rem,10vw,3rem);display:grid;place-items:center;flex:none}
+.belt button.gone{visibility:hidden}
+.belt button.wrong{animation:shake .4s;background:color-mix(in srgb,var(--red) 30%,var(--paper))}
+.ww-mimi{width:min(150px,24vh);height:auto;aspect-ratio:1;transform-origin:50% 100%}
+.ww-mimi.munch{animation:munch .25s 3 alternate}
+@keyframes munch{to{transform:scale(1.12,.88)}}
+.flyer{position:fixed;z-index:45;font-size:3rem;line-height:1;transition:transform .45s cubic-bezier(.5,-.3,.6,1),opacity .45s;pointer-events:none}
+/* paint */
+.wg-paint{width:min(170px,30vh);height:auto}
+.wg-paint .fillme{transition:fill .35s}
+.pots{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:460px}
+.pots button{width:clamp(64px,18vw,82px);aspect-ratio:1;border-radius:50%;border:4px solid var(--ink);box-shadow:0 5px 0 var(--ink);background:var(--sw)}
+.pots button.wrong{animation:shake .4s;opacity:.4}
+/* count */
+.groups{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;width:min(560px,100%)}
+.groups button{min-height:120px;border-radius:22px;background:var(--paper);border:4px solid var(--ink);box-shadow:0 5px 0 var(--ink);display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:2px;padding:8px;font-size:clamp(1.1rem,4.6vw,1.6rem);line-height:1.1}
+.groups button.right{background:color-mix(in srgb,var(--green) 35%,var(--paper));animation:yay .5s}
+.groups button.wrong{background:color-mix(in srgb,var(--red) 22%,var(--paper));animation:shake .4s}
+/* which */
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(520px,100%)}
+.ab button{border-radius:24px;padding:14px 8px;background:var(--paper);border:4px solid var(--ink);box-shadow:0 5px 0 var(--ink);display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .15s,background .15s}
+.ab button .l{font-family:var(--font-fr);font-weight:700;font-size:.9rem;color:var(--muted)}
+.ab button .w{font-family:var(--font-fr);font-weight:700;font-size:clamp(1.2rem,5.4vw,1.7rem);color:var(--blue);line-height:1.15;overflow-wrap:anywhere}
+.ab button .k{color:var(--pink);font-weight:900;font-size:.85rem;min-height:1.2em}
+.ab button.lit{transform:scale(1.07);background:color-mix(in srgb,var(--yellow) 45%,var(--paper))}
+.ab button.right{background:color-mix(in srgb,var(--green) 35%,var(--paper));animation:yay .5s}
+.ab button.wrong{background:color-mix(in srgb,var(--red) 22%,var(--paper));animation:shake .4s}
+@media (max-height:620px){ .wg-pic{font-size:4.2rem} .ww-stage .mimi{width:90px} .groups button{min-height:90px} }
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
+  .ww .fall{animation-duration:var(--dur)!important}
+  .ww .belt{animation-duration:var(--dur)!important;animation-iteration-count:infinite!important}
 }
 </style>
 </head>
@@ -417,6 +540,7 @@ const BALLOON_COLORS = ['var(--red)','var(--blue)','var(--yellow)','var(--green)
 const KEY = 'mimi-francais-v1';
 let S = {stars:0, done:{}, kana:true};
 try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+S.ww = Object.assign({best:0, known:6, games:{}}, S.ww||{});
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
 const $ = (s,el=document)=>el.querySelector(s);
 const app = $('#app');
@@ -646,6 +770,9 @@ function home(){
         <div><b style="color:var(--pink)">${kanaHTML(dw)}</b> ${S.kana?'· ':''}${esc(dw.ja)}</div></div>
       <button class="speak" id="dayBtn">🔊</button>
     </div>
+    <button class="wwbanner" id="wwBtn"><span class="bolt">⚡</span>
+      <span><b>ミミの スピード チャレンジ!</b><small>みじかい ゲームが どんどん くるよ! · ことば ${S.ww.known}/${WORDS.length} · ベスト ${S.ww.best}</small></span>
+      <span class="go">▶</span></button>
     <h2>どこへ いこうかな?</h2>
     <p class="sub">すきな テーマを えらんでね。ぜんぶの メダルを あつめよう!</p>
     <div class="map">${THEMES.map((t,i)=>{
@@ -661,6 +788,7 @@ function home(){
   $('#hiBtn').onclick=()=>{ say(S.stars===0?'Bonjour ! Je m\'appelle Mimi.':'Re-bonjour ! On y va ?'); mimiJump(); };
   $('#dayBtn').onclick=()=>say(dw.fr);
   app.querySelectorAll('.stop').forEach(b=>b.onclick=()=>{ sfx.flip(); openTheme(b.dataset.t); });
+  $('#wwBtn').onclick=()=>{ sfx.win(); wwStart(); };
   if(!recOk && (!('speechSynthesis' in window) || (voicesChecked && !frVoice))) $('#voicewarn').hidden=false;
 }
 
@@ -839,6 +967,282 @@ function book(){
         :`<span class="sticker lock">${i===owned?'❓':i+1}</span>`).join('')}</div>
     </div>`);
   $('#backBtn').onclick=home;
+}
+
+/* ============ ⚡ SPEED CHALLENGE — WarioWare-style micro-games ============ */
+/* Words unlock one at a time (round-robin across themes) so each run teaches something new. */
+const WW_ORDER = ['animaux','manger','couleurs','nombres','corps','famille','salut'];
+const WORDS = (()=>{
+  const lists = WW_ORDER.map(id=>T(id).items.map(it=>(it.tid=id, it)));
+  const out = []; const max = Math.max(...lists.map(l=>l.length));
+  for(let i=0;i<max;i++) lists.forEach(l=>{ if(l[i]) out.push(l[i]); });
+  return out;
+})();
+const WW_LIVES = 4, WW_NEW_EVERY = 2, WW_SPEED_EVERY = 5, WW_BOSS_EVERY = 10;
+const FRUITS = ['🍓','🍎','🍌','🥐','🧀','🍦'];
+const isPic = it => !!it.pic;
+const isColor = it => !!it.swatch;
+const isNum = it => it.digit!=null;
+
+const WW_GAMES = [
+  {id:'listen', e:'👂', ja:'きいて タッチ!', fr:'Écoute et touche !', t:6, ok:p=>p.length>=3,
+   run(c){
+     const o=c.opts(c.n);
+     c.arena.innerHTML=`${c.q(true)}<div class="wg-opts" style="--n:${o.length>4?3:2}">${o.map(x=>`<button class="choice">${picHTML(x)}</button>`).join('')}</div>`;
+     c.bind('.choice',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'truefalse', e:'🤔', ja:'あってる?', fr:'Vrai ou faux ?', t:5.5, ok:p=>p.length>=3,
+   run(c){
+     const same = Math.random()<.5;
+     const shown = same ? c.target : pick(c.pool.filter(x=>x!==c.target));
+     c.arena.innerHTML=`${c.q(false)}<div class="wg-pic pop">${picHTML(shown)}</div>
+       <div class="wg-yn"><button class="y" aria-label="あってる">⭕</button><button class="n" aria-label="ちがう">❌</button></div>`;
+     c.bind('.wg-yn button',[true,false],(b,v)=>{ if(v===same){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'mole', e:'🔨', ja:'たたけ!', fr:'Tape !', t:7, ok:p=>p.length>=3, run:c=>moleGame(c,1)},
+  {id:'catch', e:'🧺', ja:'キャッチ!', fr:'Attrape !', t:6.5, ok:p=>p.length>=3,
+   run(c){
+     const o=c.opts(Math.min(5,c.n+1));
+     c.arena.innerHTML=`<div class="ww-top-q">${c.q(true)}</div><div class="ww-ground"></div>`+o.map((x,k)=>{
+       const isT = x===c.target;
+       const del = isT ? c.time*(.1+Math.random()*.15) : Math.random()*c.time*.35;
+       const dur = isT ? c.time-del-.15 : c.time*(.45+Math.random()*.4);
+       return `<button class="fall" style="left:${(k+.5)/o.length*100}%;--del:${del}s;--dur:${dur}s">${picHTML(x)}</button>`;
+     }).join('');
+     c.bind('.fall',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+     c.arena.querySelectorAll('.fall').forEach((b,k)=>b.addEventListener('animationend',()=>{ if(o[k]===c.target) c.lose(); else b.remove(); }));
+   }},
+  {id:'feed', e:'😋', ja:'ミミに あげて!', fr:'Donne à Mimi !', t:6.5,
+   pool:p=>{ const food=p.filter(x=>x.tid==='manger'); return food.length>=3 ? food : p.filter(isPic); }, ok:p=>p.filter(isPic).length>=3,
+   run(c){
+     const o=c.opts(Math.min(4,c.n)); const row=o.concat(o);
+     c.arena.innerHTML=`${c.q(true)}<div class="beltwrap"><div class="belt" style="--dur:${(5.5*c.f).toFixed(2)}s">${row.map(x=>`<button>${picHTML(x)}</button>`).join('')}</div></div>
+       <svg class="ww-mimi" viewBox="0 0 120 120" aria-hidden="true"><use href="#mimi-art"/></svg>`;
+     c.bind('.belt button',row,(b,x)=>{
+       if(x!==c.target){ b.classList.add('wrong'); c.lose(); return; }
+       const m=$('.ww-mimi',c.arena), a=b.getBoundingClientRect(), z=m.getBoundingClientRect();
+       const f=document.createElement('span'); f.className='flyer'; f.innerHTML=picHTML(x);
+       f.style.left=a.left+a.width/2-24+'px'; f.style.top=a.top+a.height/2-24+'px'; document.body.appendChild(f);
+       b.classList.add('gone');
+       requestAnimationFrame(()=>requestAnimationFrame(()=>{ f.style.transform=`translate(${z.left+z.width/2-a.left-a.width/2}px,${z.top+z.height*.7-a.top-a.height/2}px) scale(.4)`; f.style.opacity='.2'; }));
+       setTimeout(()=>{ f.remove(); m.classList.add('munch'); sfx.pop(); },450);
+       c.win(600);
+     });
+   }},
+  {id:'paint', e:'🖌️', ja:'ぬって!', fr:'Colorie !', t:6, pool:p=>p.filter(isColor), ok:p=>p.filter(isColor).length>=2,
+   run(c){
+     const o=c.opts(Math.min(5,c.n+1));
+     c.arena.innerHTML=`${c.q(true)}
+       <svg class="wg-paint" viewBox="0 0 100 135" aria-hidden="true">
+         <path class="fillme" d="M50 5C78 5 95 27 95 52C95 79 72 99 50 104C28 99 5 79 5 52C5 27 22 5 50 5Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="4"/>
+         <path d="M28 30q8-12 20-14" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+         <path d="M43 104h14l-7 9z" fill="var(--ink)"/><path d="M50 113q-9 10 0 20" stroke="var(--ink)" stroke-width="3" fill="none"/>
+       </svg>
+       <div class="pots">${o.map(x=>`<button style="--sw:${x.swatch}" aria-label="${esc(x.ja)}"></button>`).join('')}</div>`;
+     const fillme=$('.fillme',c.arena);
+     c.bind('.pots button',o,(b,x)=>{ fillme.setAttribute('fill',x.swatch); if(x===c.target) c.win(); else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'count', e:'🍓', ja:'かぞえて!', fr:'Compte !', t:6.5, pool:p=>p.filter(isNum), ok:p=>p.filter(isNum).length>=2,
+   run(c){
+     const o=c.opts(Math.min(3,c.n)); const fr=pick(FRUITS);
+     c.arena.innerHTML=`${c.q(true)}<div class="groups" style="--n:${o.length}">${o.map(x=>`<button aria-label="${x.digit}">${fr.repeat(x.digit)}</button>`).join('')}</div>`;
+     c.bind('.groups button',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+  {id:'which', e:'🅰️', ja:'どっちかな?', fr:'A ou B ?', t:7.5, ok:p=>p.length>=2, selfSpeak:true,
+   run(c){
+     const o=c.opts(2);
+     c.arena.innerHTML=`<div class="wg-pic pop">${picHTML(c.target)}</div>
+       <div class="ab">${o.map((x,k)=>`<button><span class="l">${'AB'[k]}</span><span class="w">${esc(x.fr)}</span><span class="k">${S.kana?esc(x.kana):''}</span></button>`).join('')}</div>
+       <button class="speak ww-ear">🔊 もういちど</button>`;
+     const bs=c.arena.querySelectorAll('.ab button');
+     const seq=()=>o.forEach((x,k)=>c.later(()=>{ bs.forEach(b=>b.classList.remove('lit')); bs[k].classList.add('lit'); say(x.fr); c.later(()=>bs[k].classList.remove('lit'),900); },350+k*1250));
+     c.replay=seq; seq();
+     c.bind('.ab button',o,(b,x)=>{ if(x===c.target){ b.classList.add('right'); c.win(); } else { b.classList.add('wrong'); c.lose(); } });
+   }},
+];
+const WW_BOSS = {id:'boss', e:'👑', ja:'ボス! 4ひき たたけ!', fr:'Le grand défi !', t:20, boss:true, ok:p=>p.length>=3, run:c=>moleGame(c,4)};
+
+function moleGame(c, rounds){
+  const cast = c.opts(Math.min(6, c.n+2));
+  let hits = 0;
+  c.arena.innerHTML=`${c.q(true)}${rounds>1?'<div class="ww-boss-prog" id="bprog"></div>':''}
+    <div class="holes">${[0,1,2,3,4,5].map(()=>`<div class="hole"><button class="mole" aria-label="もぐら"></button></div>`).join('')}</div>`;
+  const moles=[...c.arena.querySelectorAll('.mole')], up=new Map(); let sinceT=0;
+  const prog=()=>{ const p=$('#bprog',c.arena); if(p) p.textContent='👑 '+'🔨'.repeat(hits)+'⬜'.repeat(rounds-hits); };
+  prog();
+  function pop(){
+    const free=moles.filter(m=>!up.has(m)); if(free.length){
+      const m=pick(free);
+      const shown=[...up.values()];
+      let it = (!shown.includes(c.target) && (sinceT>=1 || Math.random()<.45)) ? c.target : pick(cast.filter(x=>x!==c.target && !shown.includes(x))) || c.target;
+      sinceT = it===c.target ? 0 : sinceT+1;
+      m.innerHTML=picHTML(it); m.className='mole up'; up.set(m,it);
+      c.later(()=>{ if(up.get(m)===it){ m.classList.remove('up'); up.delete(m); } }, 1250*c.f);
+    }
+    c.later(pop, 620*c.f);
+  }
+  moles.forEach(m=>m.onclick=()=>{
+    if(c.done||!up.has(m)) return;
+    const it=up.get(m); up.delete(m);
+    if(it===c.target){
+      m.classList.add('bonk'); sfx.pop(); hits++; prog();
+      setTimeout(()=>m.classList.remove('up'),250);
+      if(hits>=rounds) return c.win();
+      sfx.ok(); c.setTarget(pick(cast.filter(x=>x!==c.target)));
+    }else{ m.classList.add('miss'); c.lose(); }
+  });
+  c.later(pop, 500);
+}
+
+let R = null;
+function wwStart(){
+  R = {lives:WW_LIVES, score:0, played:0, wins:0, level:0, last:null, focus:[], fresh:[], tok:0, timers:[], raf:0};
+  document.querySelector('.ww')?.remove();
+  const el=document.createElement('div'); el.className='ww'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','スピード チャレンジ');
+  el.innerHTML=`<div class="ww-top"><div class="ww-hearts" id="wwH"></div><span class="pill star">🏅 <span id="wwS">0</span></span><button class="ww-x" id="wwX" aria-label="やめる">✕</button></div>
+    <div class="ww-arena" id="wwA"></div><div class="ww-fuse off" id="wwF"><i></i></div>`;
+  document.body.appendChild(el); document.body.classList.add('ww-on');
+  $('#wwX').onclick=wwQuit;
+  wwHearts(); wwNext();
+}
+function wwPool(){ return WORDS.slice(0, Math.min(WORDS.length, S.ww.known)); }
+function wwClear(){ if(!R) return; R.timers.forEach(clearTimeout); R.timers=[]; cancelAnimationFrame(R.raf); R.tok++; }
+function wwLater(fn,ms){ const tok=R.tok; R.timers.push(setTimeout(()=>{ if(R && R.tok===tok) fn(); },ms)); }
+function wwHearts(broke){
+  $('#wwH').innerHTML=Array.from({length:WW_LIVES},(_,i)=>`<span class="${i>=R.lives?'lost':''} ${broke&&i===R.lives?'break':''}">❤️</span>`).join('');
+  $('#wwS').textContent=R.score;
+}
+function wwFuse(on){ $('#wwF').classList.toggle('off',!on); $('#wwF').classList.remove('hurry'); $('#wwF i').style.width='100%'; }
+function wwArena(html, cls=''){ const a=$('#wwA'); a.className='ww-arena'; a.innerHTML=`<div class="ww-stage ${cls}">${html}</div>`; return a; }
+
+function wwNext(){
+  wwClear(); wwFuse(false);
+  const n=R.played+1, boss=n%WW_BOSS_EVERY===0;
+  const lvl=Math.floor((n-1)/WW_SPEED_EVERY), sped=lvl>R.level; R.level=lvl;
+  const pool=wwPool();
+  let g;
+  if(boss) g=WW_BOSS;
+  else{
+    const avail=WW_GAMES.filter(x=>x.ok(pool) && x.id!==R.last);
+    const unseen=avail.filter(x=>!S.ww.games[x.id]);
+    g = unseen.length && Math.random()<.6 ? unseen[0] : pick(avail);
+  }
+  R.last=g.id;
+  const isNewGame=!S.ww.games[g.id];
+  wwArena(`${sped?'<div class="ww-tag">⚡ SPEED UP! はやくなるよ!</div>':''}
+    <svg class="mimi" viewBox="0 0 120 120" aria-hidden="true"><use href="#mimi-art"/></svg>
+    <div class="ww-num">${boss?'👑':n}</div><div class="ww-lbl">${boss?'ボス ステージ!':'ゲーム'}</div>`, boss?'boss':'');
+  tone(boss?[262,262,392,523]:sped?[523,659,784,1047,1319]:[523,784],.1,'square',.07);
+  wwLater(()=>{
+    wwArena(`${isNewGame?'<div class="ww-tag">NEW GAME! あたらしい ゲーム</div>':''}
+      <div class="ww-cmd"><span class="e">${g.e}</span>${g.ja}</div><div class="ww-cmdfr">${esc(g.fr)}</div>`, boss?'boss':'');
+    sfx.flip();
+    wwLater(()=>wwPlay(g, pool), isNewGame?1700:1050);
+  }, sped?1900:1250);
+}
+
+function wwPlay(g, all){
+  wwClear();
+  const pool = g.pool ? g.pool(all) : all;
+  const f = g.boss ? Math.max(.75, 1-.04*R.level) : Math.max(.55, 1-.08*R.level);
+  const time = g.t * f;
+  let target = pool.find(x=>x===R.focus[0]) || pick(pool);
+  if(target===R.focus[0]) R.focus.shift();
+  const a=$('#wwA'); a.className='ww-arena'+(g.boss?' boss':''); a.innerHTML='';
+  const c = {
+    arena:a, pool, f, time, done:false,
+    get target(){ return target; },
+    n: Math.min(6, 3+Math.floor(R.level/2)),
+    later: wwLater,
+    opts(k){ return shuffle([target, ...shuffle(pool.filter(x=>x!==target)).slice(0, Math.max(1,k-1))]); },
+    q(word){ return `<div class="ww-q"><button class="bigspeak ww-ear" aria-label="もういちど きく">🔊</button>${word?`<div><div class="word">${wordHTML(target.fr)}</div><div class="kana">${S.kana?esc(target.kana):''}</div></div>`:''}</div>`; },
+    bind(sel, list, fn){ a.querySelectorAll(sel).forEach((b,k)=>b.onclick=()=>{ if(!c.done) fn(b, list[k]); }); },
+    setTarget(t){ target=t; const w=$('.ww-q .word',a), k=$('.ww-q .kana',a); if(w) w.innerHTML=wordHTML(t.fr); if(k) k.textContent=S.kana?t.kana:''; setTimeout(()=>say(t.fr),300); },
+    win(delay=350){ if(c.done) return; c.done=true; wwFreeze(); sfx.ok(); setTimeout(()=>wwEnd(true,g,target), delay); },
+    lose(){ if(c.done) return; c.done=true; wwFreeze(); sfx.no(); setTimeout(()=>wwEnd(false,g,target), 450); },
+    replay:null,
+  };
+  R.c=c; S.ww.games[g.id]=true; save();
+  g.run(c);
+  a.querySelectorAll('.ww-ear').forEach(b=>b.onclick=()=>{ if(c.replay) c.replay(); else say(target.fr); });
+  if(!g.selfSpeak) wwLater(()=>say(target.fr), 250);
+  // fuse (JS-driven so it still works with reduced motion)
+  wwFuse(true);
+  const bar=$('#wwF i'), t0=performance.now(), tok=R.tok; let hurried=false;
+  (function step(now){
+    if(!R || R.tok!==tok || c.done) return;
+    const left=Math.max(0, 1-(now-t0)/(time*1000));
+    bar.style.width=(left*100)+'%';
+    if(!hurried && left*time<2){ hurried=true; $('#wwF').classList.add('hurry'); }
+    if(left<=0){ c.lose(); return; }
+    R.raf=requestAnimationFrame(step);
+  })(t0);
+}
+function wwFreeze(){ if(!R) return; cancelAnimationFrame(R.raf); R.timers.forEach(clearTimeout); R.timers=[]; R.tok++; $('#wwF').classList.remove('hurry'); }
+
+function wwEnd(ok, g, target){
+  if(!R) return;
+  wwClear(); wwFuse(false);
+  R.played++;
+  if(ok){ R.score++; R.wins++; if(g.boss && R.lives<WW_LIVES) R.lives++; }
+  else R.lives--;
+  wwHearts(!ok);
+  if(ok){
+    const p=pick(PRAISE);
+    wwArena(`<svg class="mimi jump" viewBox="0 0 120 120" aria-hidden="true"><use href="#mimi-art"/></svg>
+      <div class="ww-big">⭕</div><div class="ww-cmd" style="font-size:2.2rem">${esc(p)}</div>
+      ${g.boss?'<div class="ww-tag">👑 ボス たおした! ❤️ +1</div>':''}`, 'win');
+    setTimeout(()=>say(p),150);
+    if(g.boss) confetti(140);
+  }else{
+    wwArena(`<div class="ww-big">💥</div><div class="ww-lbl">こたえは…</div>
+      <div class="ww-ans"><div class="p">${picHTML(target)}</div><div class="word">${wordHTML(target.fr)}</div>
+      <div class="kana">${esc(target.kana)}</div><div>${esc(target.ja)}</div></div>`, 'lose');
+    wwLater(()=>say(target.fr), 300);
+  }
+  wwLater(()=>{
+    if(R.lives<=0) return wwOver();
+    if(ok && R.wins%WW_NEW_EVERY===0 && S.ww.known<WORDS.length) return wwNewWord();
+    wwNext();
+  }, ok?(g.boss?1700:1050):2300);
+}
+
+function wwNewWord(){
+  wwClear();
+  const w=WORDS[S.ww.known]; S.ww.known++; save();
+  R.fresh.push(w); R.focus=[w,w];
+  wwArena(`<div class="ww-tag">✨ NEW! あたらしい ことば</div>
+    <div class="ww-ans pop"><div class="p">${picHTML(w)}</div><div class="word">${wordHTML(w.fr)}</div>
+      <div class="kana">${esc(w.kana)}</div><div>${esc(w.ja)}</div></div>
+    <div class="row"><button class="speak" id="wwNs">🔊</button><button class="speak slow" id="wwNsl">🐢</button><button class="nav go" id="wwGo">おぼえた! ▶</button></div>`);
+  tone([784,988,1175,1568],.08,'triangle',.1);
+  wwLater(()=>say(w.fr), 500);
+  wwLater(()=>say(w.fr,true), 1900);
+  $('#wwNs').onclick=()=>say(w.fr);
+  $('#wwNsl').onclick=()=>say(w.fr,true);
+  $('#wwGo').onclick=()=>{ sfx.flip(); wwNext(); };
+}
+
+function wwOver(){
+  wwClear();
+  const rec = R.score>S.ww.best; if(rec){ S.ww.best=R.score; save(); }
+  const stars=Math.floor(R.score/2);
+  wwArena(`<div class="ww-cmd" style="font-size:2.6rem">GAME OVER</div>
+    <div class="ww-num" style="font-size:4.5rem">${R.score}</div>
+    <div class="ww-lbl">${rec&&R.score>0?'🎉 しんきろく! NOUVEAU RECORD !':`ベスト: ${S.ww.best}`}</div>
+    ${R.fresh.length?`<div class="ww-lbl" style="font-size:1rem">きょう おぼえた ことば</div><div class="ww-words">${R.fresh.map(w=>`<span>${picHTML(w)} ${esc(w.fr)}</span>`).join('')}</div>`:''}
+    ${stars?`<div class="ww-lbl">⭐ ×${stars} ゲット!</div>`:''}
+    <div class="row"><button class="nav" id="wwHome">🏠 もどる</button><button class="nav go" id="wwAgain">🔁 もういちど</button></div>`, rec&&R.score>0?'win':'');
+  if(stars) addStars(stars);
+  if(rec&&R.score>0){ sfx.win(); confetti(160); setTimeout(()=>say('Bravo ! Bravo !'),400); }
+  $('#wwHome').onclick=wwQuit;
+  $('#wwAgain').onclick=()=>{ sfx.flip(); wwStart(); };
+  $('#wwAgain').focus();
+}
+function wwQuit(){
+  wwClear(); stopRec(); R=null;
+  document.querySelector('.ww')?.remove(); document.querySelectorAll('.flyer').forEach(f=>f.remove());
+  document.body.classList.remove('ww-on'); home();
 }
 
 /* ============ BOOT ============ */
